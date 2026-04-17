@@ -1,0 +1,268 @@
+/* ══════════════════════════════════════════════
+   USER DASHBOARD
+   ══════════════════════════════════════════════ */
+
+.ud-page { min-height: 100vh; background: var(--bg-base); }
+
+.ud-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* ── Header ── */
+.ud-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.5s ease both;
+}
+
+.ud-header-left h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+.ud-header-left p { color: var(--text-2); }
+
+/* Stats row */
+.ud-stat-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.ud-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1rem 1.4rem;
+  text-align: center;
+  min-width: 110px;
+}
+.ud-stat-num {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ud-stat-label { font-size: 0.78rem; color: var(--text-3); }
+
+/* ── Loading / empty ── */
+.ud-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  gap: 1rem;
+  color: var(--text-2);
+}
+
+.ud-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.ud-empty-icon   { font-size: 4rem; margin-bottom: 1.2rem; }
+.ud-empty h2     { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 0.5rem; }
+.ud-empty p      { color: var(--text-2); margin-bottom: 1.5rem; max-width: 360px; }
+.ud-empty-cta    {
+  background: var(--grad-gold);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.ud-empty-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+
+/* ── Layout ── */
+.ud-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.ud-sidebar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: sticky;
+  top: 90px;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.ud-sidebar-head {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ud-sidebar-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+.ud-sidebar-count {
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 100px;
+}
+
+.ud-sidebar-list { padding: 0.5rem; display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidebar-item:hover { background: var(--bg-card-hover); color: var(--text-1); }
+.sidebar-item.active {
+  background: var(--gold-dim);
+  border-color: var(--gold-border);
+  color: var(--text-1);
+}
+
+.sidebar-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.sidebar-info { min-width: 0; flex: 1; }
+.sidebar-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+.sidebar-cat { font-size: 0.73rem; color: var(--text-3); }
+
+.sidebar-active-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── Main viewer ── */
+.ud-main { animation: fadeUp 0.5s 0.15s ease both; }
+
+.video-wrap {
+  background: #000;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: var(--text-3);
+  background: var(--bg-surface);
+}
+.video-placeholder-icon { font-size: 3rem; }
+
+/* Course detail */
+.course-detail { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.75rem; }
+
+.course-detail-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.course-detail-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.enrolled-badge {
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--emerald);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.course-detail-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.detail-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--text-2);
+}
+
+.course-detail-desc {
+  color: var(--text-2);
+  line-height: 1.75;
+  font-size: 0.93rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ud-layout { grid-template-columns: 1fr; }
+  .ud-sidebar { position: static; }
+}
+@media (max-width: 580px) {
+  .ud-stat-card { min-width: 80px; padding: 0.8rem 1rem; }
+}

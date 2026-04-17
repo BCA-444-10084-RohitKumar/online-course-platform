@@ -1,0 +1,170 @@
+/* ── Payment Modal Overlay ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(2, 6, 14, 0.82);
+  backdrop-filter: blur(12px) saturate(120%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── Modal Box ── */
+.pay-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: fadeUp 0.32s cubic-bezier(.22,.68,0,1.2);
+  box-shadow: 0 24px 72px rgba(0,0,0,0.55), 0 0 0 1px rgba(245,158,11,0.08);
+  position: relative;
+}
+
+/* ── Modal Header ── */
+.pay-modal-header {
+  padding: 1.75rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.pay-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 0.3rem;
+}
+.pay-modal-sub { font-size: 0.88rem; color: var(--text-2); }
+
+.pay-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+  line-height: 1;
+}
+.pay-close:hover { border-color: var(--rose); color: var(--rose); }
+
+/* ── Course Info Strip ── */
+.pay-course-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.75rem;
+  background: var(--bg-card-hover);
+  border-bottom: 1px solid var(--border);
+}
+.pay-course-img {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.pay-course-info { flex: 1; min-width: 0; }
+.pay-course-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pay-course-meta { font-size: 0.8rem; color: var(--text-3); margin-top: 2px; }
+.pay-course-price {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── Form ── */
+.pay-form { padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+.pay-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+
+.pay-field { display: flex; flex-direction: column; gap: 5px; }
+.pay-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Reuse global form-input */
+
+/* ── Pay Button ── */
+.pay-submit-wrap { padding: 0 1.75rem 1.5rem; }
+.pay-btn {
+  width: 100%;
+  background: var(--grad-gold);
+  color: #fff;
+  border: none;
+  padding: 15px 24px;
+  border-radius: var(--r-md);
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.2s, transform 0.15s;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+.pay-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-2px); }
+.pay-btn:disabled { opacity: 0.55; cursor: not-allowed; animation: none; }
+
+.pay-lock {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  text-align: center;
+  padding: 0.5rem 1.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ── Login prompt ── */
+.pay-login-prompt {
+  padding: 2rem 1.75rem;
+  text-align: center;
+}
+.pay-login-prompt p { color: var(--text-2); margin-bottom: 1rem; }
+.pay-login-prompt a {
+  background: var(--grad-gold);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.pay-login-prompt a:hover { opacity: 0.88; }
+
+/* ── Success state ── */
+.pay-success {
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+}
+.pay-success-icon { font-size: 4rem; margin-bottom: 1rem; }
+.pay-success h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.pay-success p  { color: var(--text-2); }

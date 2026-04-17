@@ -1,0 +1,197 @@
+/* ── Course Card ── */
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.32s cubic-bezier(.22,.68,0,1.2),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease;
+  animation: fadeUp 0.55s ease both;
+  position: relative;
+}
+
+.course-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.course-card:hover {
+  transform: translateY(-7px) scale(1.01);
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-gold), var(--shadow-lg);
+}
+.course-card:hover::after { opacity: 1; }
+
+/* ── Thumbnail ── */
+.card-thumb {
+  position: relative;
+  height: 195px;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(.22,.68,0,1.2);
+}
+.course-card:hover .card-thumb img { transform: scale(1.07); }
+
+.card-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(4, 8, 15, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card-bookmark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(4, 8, 15, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.course-card:hover .card-bookmark { opacity: 1; }
+
+/* ── Body ── */
+.card-body {
+  padding: 1.25rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.65rem;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-1);
+  /* Clamp to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+.card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+.card-meta-icon { font-size: 0.9rem; }
+
+/* Rating stars */
+.card-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+}
+.star { color: var(--gold); font-size: 0.8rem; }
+.star-empty { color: var(--border); font-size: 0.8rem; }
+.stars-count { font-size: 0.78rem; color: var(--text-3); margin-left: 4px; }
+
+/* ── Footer ── */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+.card-price-wrap { display: flex; flex-direction: column; }
+.card-price-label { font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }
+.card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.price-sym   { font-size: 1rem; color: var(--gold); font-weight: 700; }
+.price-val   { font-size: 1.55rem; font-weight: 800; color: var(--text-1); line-height: 1; }
+
+.btn-buy {
+  background: var(--grad-gold);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn-buy:hover {
+  opacity: 0.88;
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+}
+.btn-buy-arrow { transition: transform 0.2s; }
+.btn-buy:hover .btn-buy-arrow { transform: translateX(3px); }
+
+/* Enrolled state */
+.btn-enrolled {
+  background: rgba(16,185,129,0.15);
+  color: var(--emerald);
+  border: 1px solid rgba(16,185,129,0.3);
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
