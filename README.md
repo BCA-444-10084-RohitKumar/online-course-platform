@@ -29,7 +29,7 @@ Email: admin@gmail.com
 Password: admin123
 Default student credentials:
 
-Email: rahul@example.com
+Email: rahul@gmail.com
 Password: user123
 Step 2 — Backend Setup
 2a. Configure application.properties
